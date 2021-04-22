@@ -7,29 +7,33 @@ module.exports.addUser = async (username, prefs={}, wall={})  => {
         prefs: prefs,
         wall: wall
     })
-    console.log('Adding: ', user);
-    await user.save()
-    console.log('Saved!');
-}
-
-module.exports.updateUser = async (username, data) => {
-    console.log('Updating: ', username);
-    User.findOneAndUpdate({ username: username }, data, (err, res) => {
-        console.log("Updated: ", err ? err:res);
+    return user.save({}, (err, res) => {
+        return err ? err : res;
     })
 }
 
-module.exports.getUser = async username => {
-    console.log('Getting: ', username);
-    User.findOne({ username: username }, (err, res) => {
-        console.log("Got: ", err ? err:res);
+module.exports.updateUser = async (username, data) => {
+    return await User.findOneAndUpdate({ username: username }, data, (err, res) => {
+        return err ? err:res
+    })
+}
+
+module.exports.getOne = async username => {
+    return await User.findOne({ username: username }, (err, res) => {
+        
+        return err ? err:res
+    })
+}
+
+module.exports.getAll = async () => {
+    return await User.find({}, (err, res) => {
+        return err ? err:res
     })
 }
 
 module.exports.deleteUser = async username => {
-    console.log('Deleting: ', username);
-    User.findOneAndDelete({ username: username }, (err, res) => {
-        console.log("Deleted: ", err ? err:res);
+    return await User.findOneAndDelete({ username: username }, (err, res) => {
+        return err ? err:res
     })
 }
 

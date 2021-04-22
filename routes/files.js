@@ -2,9 +2,10 @@ const router = require('express').Router();
 const controller = require('../controllers/files.controllers')
 
 router.get('/', controller.main);
-router.get('/add', controller.add);
-router.get('/update', controller.update);
-router.get('/get', controller.get);
-router.get('/delete', controller.delete);
+router.post('/', controller.add);
+router.get('/', controller.getAll);
+router.get('/:id', controller.getOne);
+router.put('/', controller.update);
+router.delete('/', controller.delete);
 
 module.exports = router;

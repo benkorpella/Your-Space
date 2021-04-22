@@ -1,11 +1,10 @@
 const fs = require('fs');
 const path = require("path")
 const helpers = {
-    'mongo': require('../helpers/db.users'),
     'pcloud': require('../helpers/db.pcloud')
 }
 
-let filePath = path.resolve('../Misc/example.png')
+let filePath = path.resolve('../misc/example.png')
 
 let file
 let run = async () => {
@@ -27,7 +26,11 @@ module.exports.update = (req, res) => {
 
 }
 
-module.exports.get = (req, res) => {
+module.exports.getAll = (req, res) => {
+
+}
+
+module.exports.getOne = (req, res) => {
 
 }
 
