@@ -3,11 +3,8 @@ const handlebars  = require('express-handlebars');
 const app = express();
 const port = 3000
 const routes = {
-    main: require('./frontend'),
-    api: require('./frontend/api'),
-    users: require('./routes/users'),
-    posts: require('./routes/posts'),
-    files: require('./routes/files')
+    main: require('./routes'),
+    api: require('./routes/api'),
 }
 
 require('./helpers/mongo-connection') // Starts the connection to Mongodb

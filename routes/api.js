@@ -1,8 +1,8 @@
 const router = require('express').Router()
 const routes = {
-    'users': require('../routes/users'),
-    'posts': require('../routes/posts'),
-    'files': require('../routes/files')
+    'users': require('./api/users'),
+    'posts': require('./api/posts'),
+    'files': require('./api/files')
 }
 
 

@@ -27,7 +27,7 @@ module.exports.getOne = async id => {
     })
 }
 
-module.exports.getAll = async id => {
+module.exports.getAll = async () => {
     return Post.find({}, (err, res) => {
         return err ? err:res
     })

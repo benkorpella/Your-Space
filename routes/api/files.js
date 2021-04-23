@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const controller = require('../controllers/users.controllers')
+const controller = require('../../controllers/files.controllers')
 
-//router.get('/', controller.main);
+router.get('/', controller.main);
 router.post('/', controller.add);
 router.get('/', controller.getAll);
 router.get('/:id', controller.getOne);
-router.put('/:id', controller.update);
-router.delete('/:id', controller.delete);
+router.put('/', controller.update);
+router.delete('/', controller.delete);
 
 module.exports = router;

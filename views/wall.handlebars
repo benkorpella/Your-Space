@@ -1,0 +1,21 @@
+{{#if username}}
+<h1 style='text-align: center'>{{ username }}'s wall</h1>
+{{else}}
+<h1 style='text-align: center'>Nobody's wall</h1>
+{{/if}}
+
+
+
+<div>
+    {{#each posts}}
+        <div style='border: 2px solid blue; padding: 10px; margin: 15px auto; width: 50%; '>
+            {{#with this}}
+                <h3 style="text-align: center;">{{title}}</h3>
+                By: <a href="/wall/{{author}}" target="_self">{{author}}</a>
+                <p>{{body}}</p>
+            {{/with}}
+        </div>
+    {{/each}}
+</div>
+
+
