@@ -11,13 +11,21 @@ module.exports.main = (req, res) => {
 }
 
 module.exports.wall = async (req, res) => {
-    console.log(await helpers.posts.getAll())
     let p = JSON.parse(JSON.stringify(await helpers.posts.getAll()))
-    console.log(p);
-
     res.render('wall', { 
         username: req.params.username,
         posts: p,
         title: 'Home Page'
+    })
+}
+
+module.exports.edit = async (req, res) => {
+    res.render('postEdit', { 
+        prefill: {
+            title: req.params.title,
+            author: req.params.author,
+            body: req.params.body
+        },
+        title: 'Edit post'
     })
 }

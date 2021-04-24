@@ -1,5 +1,6 @@
 const express = require('express');
 const handlebars  = require('express-handlebars');
+const formidable = require('express-formidable');
 const app = express();
 const port = 3000
 const routes = {
@@ -9,7 +10,8 @@ const routes = {
 
 require('./helpers/mongo-connection') // Starts the connection to Mongodb
 
-app.use(express.json())
+//app.use(express.json())
+app.use(formidable())
 
 app.engine('handlebars', handlebars());
 app.set('view engine', 'handlebars');

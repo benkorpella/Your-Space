@@ -7,8 +7,8 @@ module.exports.main = async (req, res) => {
 }
 
 module.exports.add = async (req, res) => {
-    let out = await helpers.mongo.addPost(req.body.title, req.body.tags, req.body.author, req.body.body)
-    res.send(out)    
+    let out = await helpers.mongo.addPost(req.fields.title, req.fields.tags, req.fields.author, req.fields.body)
+    res.redirect(req.query.redirect)    
 }
 
 module.exports.update = async (req, res) => {

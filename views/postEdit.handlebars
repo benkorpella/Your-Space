@@ -1,0 +1,15 @@
+<form action="/api/posts?redirect=..%2F..%2Fwall" method="post" >
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" placeholder="{{prefill.title}}"><br><br>
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" placeholder="{{prefill.author}}"><br><br>
+
+    <label for="body">Body:</label>
+    <textarea id="body" name="body" rows="4" cols="50">{{prefill.body}}</textarea><br><br>
+
+    <label for="draft">Draft?</label>
+    <input type="checkbox" name="draft" id="draft" checked>
+
+    <input type="submit" value="Submit">
+</form>
