@@ -30,3 +30,11 @@ module.exports.delete = async (req, res) => {
     let out = await helpers.mongo.deleteUser(req.params.id)
     res.send(out)
 }
+
+
+
+module.exports.register = async (req, res, next) => {
+    console.log('user Controller: ', 'adding - start');
+    let out = await helpers.mongo.addUser(req.fields.username, req.fields.password)
+    next()
+}

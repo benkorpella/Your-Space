@@ -1,15 +1,13 @@
 //This is for user data
 const User = require('../models/mongo.user')
 
-module.exports.addUser = async (username, prefs={}, wall={})  => {
+module.exports.addUser = async (username, password, prefs={}, wall={})  => {
     let user = new User({
         username: username,
         prefs: prefs,
         wall: wall
     })
-    return user.save({}, (err, res) => {
-        return err ? err : res;
-    })
+    await User.register(user, password)
 }
 
 module.exports.updateUser = async (username, data) => {
