@@ -4,7 +4,7 @@ const formidable = require('express-formidable');
 const passport = require('passport')
 const session = require('express-session');
 const app = express();
-const port = 3000
+const port = process.env.PORT || 3000
 const routes = {
     main: require('./routes'),
     api: require('./routes/api'),
