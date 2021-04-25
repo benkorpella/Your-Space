@@ -16,7 +16,8 @@ const models = {
 require('./helpers/mongo-connection') // Starts the connection to Mongodb
 
 //app.use(express.json())
-app.use(formidable())
+app.use(express.urlencoded({extended: true}))
+// app.use(formidable())
 app.use(session({
     secret: 'secrety secret 1235' 
 }))
@@ -25,6 +26,14 @@ app.use(passport.session())
 
 passport.use(models.User.createStrategy())
 
+passport.serializeUser((user, done) => {
+    done(null, user._id);
+});
+  
+passport.deserializeUser(async (id, done) => {
+    const user = await models.User.findById(id);
+    done(null, user);
+});
 
 app.engine('handlebars', handlebars());
 app.set('view engine', 'handlebars');

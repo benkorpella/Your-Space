@@ -13,7 +13,7 @@ module.exports.main = (req, res) => {
 module.exports.wall = async (req, res) => {
     let p = JSON.parse(JSON.stringify(await helpers.posts.getAll()))
     res.render('wall', { 
-        username: req.params.username,
+        username: req.user.username,
         posts: p,
         title: 'Home Page'
     })
