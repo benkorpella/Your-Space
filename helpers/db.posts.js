@@ -27,6 +27,12 @@ module.exports.getOne = async id => {
     })
 }
 
+module.exports.getSomeByAuthor = async author => {
+    return Post.find({ author: author }, (err, res) => {
+        return err ? err:res
+    })
+}
+
 module.exports.getAll = async () => {
     return Post.find({}, (err, res) => {
         return err ? err:res

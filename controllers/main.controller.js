@@ -10,7 +10,7 @@ module.exports.main = (req, res) => {
     })
 }
 
-module.exports.wall = async (req, res) => {
+module.exports.homeWall = async (req, res) => {
     let p = JSON.parse(JSON.stringify(await helpers.posts.getAll()))
     res.render('wall', { 
         username: req.user.username,
@@ -27,5 +27,14 @@ module.exports.edit = async (req, res) => {
             body: req.params.body
         },
         title: 'Edit post'
+    })
+}
+
+module.exports.wall = async (req, res) => {
+    let p = JSON.parse(JSON.stringify(await helpers.posts.getSomeByAuthor(req.params.username)))
+    res.render('wall', { 
+        username: req.params.username,
+        posts: p,
+        title: `${req.params.username}'s Page`
     })
 }

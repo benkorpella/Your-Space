@@ -7,7 +7,7 @@ module.exports.main = async (req, res) => {
 }
 
 module.exports.add = async (req, res) => {
-    let out = await helpers.mongo.addPost(req.fields.title, req.fields.tags, req.fields.author, req.fields.body)
+    let out = await helpers.mongo.addPost(req.body.title, req.body.tags, req.body.author, req.body.body)
     res.redirect(req.query.redirect)    
 }
 
@@ -18,6 +18,11 @@ module.exports.update = async (req, res) => {
 
 module.exports.getOne = async (req, res) => {
     let out = await helpers.mongo.getOne(req.params.id)
+    res.send(out)
+}
+
+module.exports.getSomeByAuthor = async (req, res) => {
+    let out = await helpers.mongo.getSomeByAuthor(req.params.username)
     res.send(out)
 }
 
